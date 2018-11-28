@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
-import fs from 'fs';
-import path from 'path';
+import * as jwt from 'jsonwebtoken';
+import * as fs from 'fs';
+import * as path from 'path';
 
 export default class Auth {
 

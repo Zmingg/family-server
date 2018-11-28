@@ -1,14 +1,13 @@
 import {request} from './index';
 import Auth from '../auth';
 
-
 export default class User {
 
   /**
    * 获取用户列表
    * @return {function(*=): function(*, *)}
    */
-  findUsers = request({
+  static findUsers = request({
     sql: 'SELECT * FROM `user`',
     callback: (error, results, fields) => ({
       code: 0,
@@ -19,7 +18,7 @@ export default class User {
   /**
    * 登陆
    */
-  createSession = request({
+  static createSession = request({
     sql: 'SELECT * FROM `user` WHERE `username` = ? AND `password` = ?',
     params: ['user', 'pass'],
     authRequire: false,

@@ -1,8 +1,9 @@
-import mysql from 'mysql';
+import * as mysql from 'mysql';
 
 class Conn {
 
   static instance = null;
+  query: any;
 
   constructor() {
     /** 单例
@@ -11,6 +12,7 @@ class Conn {
     if (!Conn.instance) {
       Conn.instance = Conn.connect();
     }
+    this.query = Conn.instance.query;
     return Conn.instance;
   }
 
@@ -23,7 +25,9 @@ class Conn {
     });
   }
 
-
+  // query(args) {
+  //   return Conn.instance.query(args)
+  // }
 }
 
 export default new Conn();

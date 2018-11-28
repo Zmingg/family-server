@@ -29,13 +29,13 @@ const request = ({sql, params = [], authRequire = true, callback}) => (ctx, next
     sql: sql,
     values: bodyParams,
     timeout: 10000
-  }, (...args) => {
+  }, (error, results, fields) => {
 
-    const {code = 0, data = '', ...rest} = callback(...args);
+    const {code = 0, data = '', ...rest} = callback(error, results, fields);
     const response = {
       code,
       data,
-      msg: args.error ? 'failed' : 'succeed',
+      msg: error ? 'failed' : 'succeed',
       serverTime: new Date(),
       ...rest
     };

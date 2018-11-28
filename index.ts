@@ -1,11 +1,9 @@
-import Koa from'koa';
+import * as Koa from 'koa';
 import router from './router/index';
-import koaBody from 'koa-body';
-import cors from '@koa/cors';
+import * as koaBody from 'koa-body';
 
 const app = new Koa();
 
-app.use(cors());
 app.use(koaBody({
   multipart: true
 }));

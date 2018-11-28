@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "lib": ["es6", "dom"],
+    "target": "es5",
+    "jsx": "react",
+    "types": ["node"],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
