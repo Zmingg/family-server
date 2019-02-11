@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
+    "module": "commonjs",
+    "declaration": false,
     "noImplicitAny": false,
-    "lib": ["es6", "dom"],
-    "target": "es5",
-    "jsx": "react",
-    "types": ["node"],
+    "removeComments": true,
+    "noLib": false,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "target": "es6",
+    "sourceMap": true,
+    "allowJs": true,
+    "outDir": "./dist"
   },
   "include": [
-    "./src/**/*"
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
   ]
 }
