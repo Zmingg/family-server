@@ -3,7 +3,7 @@ import Passport from './passport.interface';
 import PassportEntity from './passport.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Controller, Get, Post, Body, Put, Param, Delete, Query } from '@nestjs/common';
+import { Param } from '@nestjs/common';
 
 
 @Injectable()
