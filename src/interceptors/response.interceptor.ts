@@ -1,6 +1,6 @@
 import { Injectable, NestInterceptor, ExecutionContext } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable()
 export class ResponseInterceptor implements NestInterceptor {
@@ -8,11 +8,11 @@ export class ResponseInterceptor implements NestInterceptor {
     context: ExecutionContext,
     call$: Observable<any>,
   ): Observable<any> {
-    console.log('Before...');
-
-    const now = Date.now();
-    return call$.pipe(
-      tap((e) => console.log(e)),
-    );
+    return call$.pipe(map(data => ({
+      statusCode: 0,
+      serverTime: Math.round(new Date().getTime() / 1000),
+      msg: 'ok',
+      data
+    }))); 
   }
 }
