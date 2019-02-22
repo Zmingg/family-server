@@ -21,7 +21,9 @@
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.3.3",
-    "typeorm": "^0.2.13"
+    "typeorm": "^0.2.13",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.10",

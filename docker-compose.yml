@@ -1,0 +1,21 @@
+version: "3"
+services:
+  fm-server:
+    image: "node:8"
+    external_links:
+      - mysql_mysql_1:mysql
+    working_dir: /home/services/fm
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/services/fm
+    ports:
+      - 3000:3000
+    networks:
+      - default
+      - mysql
+    command: "npm start"
+
+networks:
+  mysql:
+    external: true
