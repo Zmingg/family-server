@@ -1,4 +1,4 @@
-import { Injectable, NestMiddleware, MiddlewareFunction } from '@nestjs/common';
+import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Logger } from '../lib/logger';
 
 @Injectable()
@@ -9,16 +9,13 @@ export class LoggerMiddleware implements NestMiddleware {
     this.logger = new Logger('controller');
   }
 
-  resolve(...args: any[]): MiddlewareFunction {
-    return (req, res, next) => {
-      const {baseUrl, headers} = req;
-      const startTime = Date.now();
-      res.on('finish', () => {
-        const {statusCode} = res;
-        const time = `${Date.now() - startTime}ms`;
-        this.logger.info(`${baseUrl} ${statusCode} ${headers.host} ${time}`);
-      });
-      next();
-    };
- }
+  use(req: Request, res: Response, next: Function) {
+
+    const {url, headers} = req;
+    const serverTime = Date.now();
+    this.logger.info(`${serverTime} ${url}`);
+
+    next();
+  }
+
 }
