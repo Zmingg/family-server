@@ -7,6 +7,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -17,6 +18,16 @@ async function bootstrap() {
   app.use(compression());
   app.useGlobalInterceptors(new ResponseInterceptor());
   app.useGlobalGuards(new AuthGuard());
+
+  const options = new DocumentBuilder()
+    .setTitle('AI 质控')
+    // .setDescription('The cats API description')
+    .setVersion('1.0')
+    .setBasePath('api/ai')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('api', app, document);
+  
   await app.listen(3000);
 }
 bootstrap();

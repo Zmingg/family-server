@@ -1,10 +1,10 @@
 import { Module, NestModule, RequestMethod, MiddlewareConsumer } from '@nestjs/common';
 import { LoggerMiddleware } from './middleware/logger.middle';
-import { CatsModule } from './modules/ai'
+import { AiModule } from './modules/ai'
 
 @Module({
   imports: [
-    CatsModule
+    AiModule
   ]
 })
 

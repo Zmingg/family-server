@@ -1,9 +1,38 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
+import { AiService } from './ai.service';
+import { User } from './interfaces/user.interface';
+import { ApiUseTags, ApiBearerAuth, ApiResponse} from '@nestjs/swagger';
+import { GerUserDto } from './dto/GetUserDto'
+import { ResponseDto, Response } from '../ResponseDto'
 
-@Controller('cats')
-export class CatsController {
+type aa = string
+
+@ApiUseTags('ai')
+@ApiBearerAuth()
+@Controller()
+export class AiController {
+  constructor(private readonly aiService: AiService) {}
+
+  @Get('user')
+  @ApiResponse({
+    status: 200,
+    description: 'The found record',
+    type: Response<User>,
+  })
+  findOne(
+    //   @Param('id') id: number,
+      @Query() query: GerUserDto
+      ): User {
+
+    return {
+      id: 99,
+      age: 10,
+      name: 'ss'
+    };
+  }
+
   @Get()
-  findAll(): string {
-    return 'This action returns all cats';
+  async findAll(): Promise<User[]> {
+    return this.aiService.findAll();
   }
 }

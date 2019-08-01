@@ -15,6 +15,7 @@
     "@nestjs/platform-fastify": "^6.5.3",
     "@nestjs/swagger": "^3.1.0",
     "compression": "^1.7.4",
+    "fastify-swagger": "^2.4.0",
     "md5": "^2.2.1",
     "mysql": "^2.16.0",
     "reflect-metadata": "^0.1.13",
